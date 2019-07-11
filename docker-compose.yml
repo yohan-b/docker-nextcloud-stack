@@ -1,0 +1,33 @@
+version: "2.1"
+
+services:
+
+  nextcloud:
+    container_name: nextcloud-full
+    image: nextcloud:15.0.8
+    build: ./docker/.examples/dockerfiles/full/apache/
+    restart: always
+    networks:
+      - reverse-proxy
+      - mysqlnet
+      - mailnet
+    expose: 
+      - "80/tcp"
+    volumes:
+      - nextcloud:/var/www/html:Z
+
+networks:
+
+  reverse-proxy:
+    external: true
+
+  mysqlnet:
+    external: true
+
+  mailnet:
+    external: true
+
+volumes:
+
+  nextcloud:
+    external: true

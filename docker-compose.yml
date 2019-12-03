@@ -4,7 +4,7 @@ services:
 
   nextcloud:
     container_name: nextcloud-full
-    image: nextcloud:15.0.8
+    image: nextcloud:16.0.6
     build: ./docker/.examples/dockerfiles/full/apache/
     restart: always
     networks:
@@ -15,6 +15,7 @@ services:
       - "80/tcp"
     volumes:
       - nextcloud:/var/www/html:Z
+      - ./www-data:/var/spool/cron/crontabs/www-data
 
 networks:
 

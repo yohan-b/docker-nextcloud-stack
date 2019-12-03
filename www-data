@@ -1,0 +1,2 @@
+*/15 * * * * php -f /var/www/html/cron.php
+*/1 * * * * pgrep -af fulltextsearch | grep -qv grep || { php /var/www/html/occ fulltextsearch:index -q; php /var/www/html/occ fulltextsearch:live -q; }

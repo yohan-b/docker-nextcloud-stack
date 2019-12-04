@@ -6,7 +6,7 @@ services:
     container_name: nextcloud-full
     image: nextcloud:16.0.6
     build: ./docker/.examples/dockerfiles/full/apache/
-    restart: always
+    restart: unless-stopped
     networks:
       - reverse-proxy
       - mysqlnet
@@ -15,7 +15,8 @@ services:
       - "80/tcp"
     volumes:
       - nextcloud:/var/www/html:Z
-      - ./www-data:/var/spool/cron/crontabs/www-data
+      - ./supervisord.conf:/etc/supervisor/supervisord.conf
+      - ./run_elasticsearch.sh:/run_elasticsearch.sh
 
 networks:
 

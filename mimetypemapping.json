@@ -1,0 +1,7 @@
+{
+        "_comment" : "Array mapping file extensions to mimetypes (in alphabetical order)",
+        "_comment2": "The first index in the mime type array is the assumed correct mimetype",
+        "_comment3": "and the second (if present) is a secure alternative",
+
+        "kdbx": ["application/x-keepass2"]
+}

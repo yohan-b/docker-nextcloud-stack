@@ -4,7 +4,7 @@ services:
 
   nextcloud:
     container_name: nextcloud-full
-    image: nextcloud:16.0.6
+    image: nextcloud:17.0.3
     build: ./docker/.examples/dockerfiles/full/apache/
     restart: unless-stopped
     networks:
@@ -14,8 +14,8 @@ services:
     expose: 
       - "80/tcp"
     volumes:
-      - nextcloud:/var/www/html:Z
-      - ./supervisord.conf:/etc/supervisor/supervisord.conf
+      - /mnt/volumes/nextcloud/data:/var/www/html:Z
+      - ./supervisord.conf:/supervisord.conf
       - ./run_elasticsearch.sh:/run_elasticsearch.sh
 
 networks:
@@ -27,9 +27,4 @@ networks:
     external: true
 
   mailnet:
-    external: true
-
-volumes:
-
-  nextcloud:
     external: true

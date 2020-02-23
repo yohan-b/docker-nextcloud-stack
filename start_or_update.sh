@@ -1,9 +1,9 @@
 #!/bin/bash
 for NETWORK in mailnet mysqlnet reverse-proxy
 do
-    sudo docker network inspect ${NETWORK} && continue
+    sudo docker network inspect ${NETWORK} &> /dev/null && continue
     sudo docker network create ${NETWORK}
-    sudo docker network inspect ${NETWORK} || \
+    sudo docker network inspect ${NETWORK} &> /dev/null || \
     { echo "ERROR: could not create network ${NETWORK}, exiting."; exit 1; }
 done
 

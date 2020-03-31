@@ -4,9 +4,8 @@ services:
 
   nextcloud:
     container_name: nextcloud-full
-    image: nextcloud:17.0.3
+    image: nextcloud:18.0.3
     build: ./docker/.examples/dockerfiles/full/apache/
-    restart: unless-stopped
     networks:
       - reverse-proxy
       - mysqlnet
